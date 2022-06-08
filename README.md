@@ -175,9 +175,11 @@ Now that we have the information we need, we can create an Evil Twin using airba
 ![image](https://user-images.githubusercontent.com/88451628/172545593-378e2535-bae4-46c1-a9df-fcf1b2848d75.png)						
 Step 4: Configure Interface at0
 As we saw in the last step, airbase-ng sets the evil twin on interface at0. We must bring this interface up, configure it, enable IP forwarding, and other parameters. Open up a new terminal, and execute the following commands. Here is what these commands do:
+
 •	ifconfig at0 up brings up the at0 interface. You can verify it’s now up using the     ifconfig command.
 •	ifconfig at0 10.0.0.1 netmask 255.255.255.0 sets the at0 interface IP address as 10.0.0.1 and the subnet mask as /24.
 •	route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.1 creates a static route in our routing table so that any traffic from out clients will be forwarded to the real gateway at 10.0.0.1, which is a part of the 10.0.0.0/24 network.
+
 •	iptables -P FORWARD ACCEPT creates a policy to accept forwarding in the chain target. This makes our Linux machine act like a router (even though it isn’t).
 •	iptables -t nat -A POSTROUTING -o wlan0mon -j MASQUERADE allows us to route outbound traffic without disrupting the normal flow of traffic on the network. The masquerade option kind of acts like Source NAT. See here for more information
 •	.echo 1 > /proc/sys/net/ipv4/ip_forward enables IP forwarding. The “1” enables IP forwarding while a “0” disables it
@@ -231,8 +233,11 @@ if we want to see more in details, we can run Wireshark
 
 
 Wireshark is the best open-source network analyzer available. It is packed with features comparable to commercial network analyzers, and with a large, diverse collection of authors, new enhancements are continually developed. We can detect deauth signals on the network.
+
 Next, click Start to initiate the packet capture. At this point, you’ve configured your system to capture wireless traffic in monitor mode. The next step is to utilize the information contained in the packets you are capturing. Fortunately, Wireshark has sophisticated analysis mechanisms that can be used for wireless traffic analysis.
+
 Using display filters, you can exclude uninteresting traffic to reveal useful information, or search through a large packet capture for a specific set of information.
+
 For Filtering Deauthentication Frames, the filter is:
 (wlan.fc.type == 0) && (wlan.fc.type_subtype == 0x0c)
 OR
