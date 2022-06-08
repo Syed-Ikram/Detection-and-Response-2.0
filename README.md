@@ -30,7 +30,9 @@ Pass rules: It ignores the packet and drops it.
 As we know, IP is a unique address for every computer and is used for transferring data or packets over the internet from one network to the other network. Each packet contains a message, data, source, destination address, and much more. Snort supports three IP protocols for suspicious behavior:
 
 Transmission Control Protocol (TCP) Connects two different hosts and exchanges data between them. Examples include HTTP, SMTP, and FTP.
+
 User Datagram Protocol (UDP): Broadcasts messages over the internet. Examples include DNS traffic.
+
 Internet Control Message Protocol (ICMP): Sends network error messages in Windows. Examples include Ping and Traceroute.
                                             
 ![image](https://user-images.githubusercontent.com/88451628/172546356-9afe5412-a0f5-4214-9c2f-8e59dfeabe53.png)
@@ -42,8 +44,11 @@ Snort captures and display all traffic packets and save them to the log file. In
 •	Writing and saving custom detection rules for LAN
  
 ![image](https://user-images.githubusercontent.com/88451628/172546281-27abda8a-ced9-4121-a6f1-edbd1a2880ab.png)
+
 Now, let’s start Snort in IDS mode and tell it to display alerts to the console:
+
 sudo snort -A console -q -c /etc/snort/snort.conf -i eht0
+
 Again, we are pointing Snort to the configuration file it should use (-c) and specifying the interface (-i eth0). The -A console option prints alerts to standard output, and -q is for “quiet” mode (not showing banner and status report). You shouldn’t see any output when you enter the command because Snort hasn’t detected any activity specified in the rule we wrote. 
 
 •	To start the snort server, we need to run the configuration file using Wi-Fi interface.
@@ -74,6 +79,7 @@ Detecting Syn request on ubuntu which acts as snort server.
  
 ![image](https://user-images.githubusercontent.com/88451628/172545945-5275845e-ab7e-4a91-accd-a7f6302f634e.png)
 Payload Exploitation
+
 The payload we make using msfvenom will be a Reverse TCP payload. This payload creates an executable that, when started, establishes a connection between the user’s computer and our Metasploit handler, allowing us to conduct a meterpreter session. Use the following stated command to access msfvenom on Kali Linux.
 •	Creating windows payload using msfvenom framework on Metasploit 
  
