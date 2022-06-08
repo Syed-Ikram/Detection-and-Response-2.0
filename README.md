@@ -23,11 +23,11 @@ Transmission Control Protocol (TCP) Connects two different hosts and exchanges d
 User Datagram Protocol (UDP): Broadcasts messages over the internet. Examples include DNS traffic.
 Internet Control Message Protocol (ICMP): Sends network error messages in Windows. Examples include Ping and Traceroute.
                                             
-            ![image](https://user-images.githubusercontent.com/88451628/172546356-9afe5412-a0f5-4214-9c2f-8e59dfeabe53.png)
+![image](https://user-images.githubusercontent.com/88451628/172546356-9afe5412-a0f5-4214-9c2f-8e59dfeabe53.png)
 
-            ![image](https://user-images.githubusercontent.com/88451628/172546321-3b027ca2-c7dd-4cc5-a9e0-cc34e8d43289.png)
+![image](https://user-images.githubusercontent.com/88451628/172546321-3b027ca2-c7dd-4cc5-a9e0-cc34e8d43289.png)
 
-						![image](https://user-images.githubusercontent.com/88451628/172546300-6c18fb46-dcec-41d0-b6c9-76960b8aee08.png)
+![image](https://user-images.githubusercontent.com/88451628/172546300-6c18fb46-dcec-41d0-b6c9-76960b8aee08.png)
 Snort captures and display all traffic packets and save them to the log file. In this mode, Snort applies all rules on every captured packet. If match with rules, Snort makes decision just by displaying it on the log or generate an alert. If packet does not match with any rules, it drops and Snort does not create any log. This command could be used to start snort on NIDS mode. Snort –c /etc/Snort/Snort.conf That command loads every line of Snort.conf and apply it as IDS like rules, ports, connecting folder and many more. Every log on every captured traffic that matched with Snort rules.
 •	Writing and saving custom detection rules for LAN
  
