@@ -21,11 +21,14 @@ All well-known and common attempts to exploit the vulnerabilities in the company
 
 The rules defined to the system should be compatible enough to act immediately and take necessary remedial measures, according to the nature of the intrusion. Snort does not evaluate the rules in the order that they appear in the snort rules file. By default, the order is:
 
-Alert rules: It generates an alert using alert method.
+Alert rules: It generates an alert using alert method. 
+
 Log rules: After generating alert, it then logs the packet.
+
 Pass rules: It ignores the packet and drops it.
 
 As we know, IP is a unique address for every computer and is used for transferring data or packets over the internet from one network to the other network. Each packet contains a message, data, source, destination address, and much more. Snort supports three IP protocols for suspicious behavior:
+
 Transmission Control Protocol (TCP) Connects two different hosts and exchanges data between them. Examples include HTTP, SMTP, and FTP.
 User Datagram Protocol (UDP): Broadcasts messages over the internet. Examples include DNS traffic.
 Internet Control Message Protocol (ICMP): Sends network error messages in Windows. Examples include Ping and Traceroute.
