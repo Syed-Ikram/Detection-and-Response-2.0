@@ -2,22 +2,29 @@
 SNORT
 First, we download Snort and install it. Then To verify the Snort version, we open the terminal and type in snort -V and hit Enter.
 Now, let’s start Snort in IDS mode and tell it to display alerts to the console: sudo snort -A console  -c /etc/snort/snort.conf  -i  eth0. Here we are pointing Snort to the configuration file it should use (-c) and specifying the interface (-i eth0). The -A console option prints alerts to standard output. We don’t see any output when we enter the command because Snort hasn’t detected any activity specified in the rule we wrote. We generate some activity and see if our rule is working. We launch our VM. 
+
 The direction operators <> and -> indicate the direction of interest for the traffic. This means traffic can either flow in one direction or in bi-directionally. The keyword any can be used to define any IP addresses, and numeric IP addresses must be used with a Classless Inter-Domain Routing (CDIR) netmask. In Snort rules, the port numbers can be listed in many ways, including any ports, negation, etc. Port ranges are indicated with Range operator. Usually, Snort rules were written in a single line, but with the new version, Snort rules can be written in multi-line. This can be done by adding a backslash \ to the end of the line. This multiple-line approach helps if a rule is very large and difficult to understand.
+
 Protocols	Ip Address	Action performed
 *log tcp any :1024 ->	192.168.1.0/24 400:	It will log traffic from various ports and will go to ports which are greater than or equal to 400
 log udp any any ->	92.168.1.0/24 1:1024	It will log traffic from any port and destination ports ranging from 1 to 1024
 Snort rules must be contained on a single line. Unless the multi-line character \ is used, the snort rule parser does not handle rules on multiple lines. Usually, it is contained in snort.conf configuration file.
+
 This comes with two logical parts:
 Rule header: Identifies rule actions such as alerts, log, pass, activate, dynamic and the CDIR block.
 Rule options: Identifies the rule’s alert messages.
+
 Snort rules must be written in such a way that they describe all the following events properly:
 The conditions in which a user thinks that a network packet(s) is not same as usual or if the identity of the packet is not authentic.
 Any violation of the security policy of the company that might be a threat to the security of the company’s network and other valuable information.
 All well-known and common attempts to exploit the vulnerabilities in the company’s network.
+
 The rules defined to the system should be compatible enough to act immediately and take necessary remedial measures, according to the nature of the intrusion. Snort does not evaluate the rules in the order that they appear in the snort rules file. By default, the order is:
+
 Alert rules: It generates an alert using alert method.
 Log rules: After generating alert, it then logs the packet.
 Pass rules: It ignores the packet and drops it.
+
 As we know, IP is a unique address for every computer and is used for transferring data or packets over the internet from one network to the other network. Each packet contains a message, data, source, destination address, and much more. Snort supports three IP protocols for suspicious behavior:
 Transmission Control Protocol (TCP) Connects two different hosts and exchanges data between them. Examples include HTTP, SMTP, and FTP.
 User Datagram Protocol (UDP): Broadcasts messages over the internet. Examples include DNS traffic.
